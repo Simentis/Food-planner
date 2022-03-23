@@ -1,0 +1,25 @@
+
+
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <input name="mealId" type="hidden" [value]="service.formData.mealId"/>
+<div class="form group">
+<label >Danie:</label>
+<input class="form-control form-control-lg" placeholder="Nazwa dania" name="mealName" 
+#mealName="ngModel" [(ngModel)]="service.formData.mealName">
+</div>
+
+<div class="form group">
+    <label >Kategoria:</label>
+    <input class="form-control form-control-lg" placeholder="Kategoria" name="mealCategory" 
+    #mealCategory="ngModel" [(ngModel)]="service.formData.mealCategory">
+    </div>
+
+<div class="form group">
+    <label >Przepis:</label>
+    <textarea class="form-control form-control-lg" placeholder="Przepis" name="mealRecipe" 
+    #mealRecipe="ngModel" [(ngModel)]="service.formData.mealRecipe"></textarea>
+    </div>
+    <div class="form group">
+<button style="margin-top:10px" class="btn btn-lg btn-block" type="submit">Potwierdź</button>
+    </div>
+</form>

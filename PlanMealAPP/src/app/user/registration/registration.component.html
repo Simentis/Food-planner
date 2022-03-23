@@ -1,0 +1,35 @@
+<form [formGroup]="service.formMode" autocomplete="off" (submit)="onSubmit()">
+    <div class="form-group required">
+      <label>Użytkownik</label>
+      <input class="form-control" formControlName="UserName">
+      <label class="text-danger" *ngIf="service.formMode.get('UserName').touched && service.formMode.get('UserName').errors?.['required']">To pole jest wymagane.</label>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input class="form-control" formControlName="Email">
+      <label class="text-danger" *ngIf="service.formMode.get('Email').touched && service.formMode.get('Email').errors?.['email']">Błędny adres Email.</label>
+    </div>
+    <div class="form-group">
+      <label>Imię i nazwisko</label>
+      <input class="form-control" formControlName="FullName">
+    </div>
+    <div formGroupName="Passwords">
+      <div class="form-group required">
+        <label>Hasło</label>
+        <input type="password" class="form-control" formControlName="Password">
+        <label class="text-danger" *ngIf="service.formMode.get('Passwords.Password').touched && service.formMode.get('Passwords.Password').errors?.['required']">To pole jest wymagane..</label>
+        <label class="text-danger" *ngIf="service.formMode.get('Passwords.Password').touched && service.formMode.get('Passwords.Password').errors?.['minlength']">Minimum 4 znaki.</label>
+      </div>
+      <div class="form-group required">
+        <label>Potwierdź hasło</label>
+        <input type="password" class="form-control" formControlName="ConfirmPassword">
+        <label class="text-danger" *ngIf="service.formMode.get('Passwords.ConfirmPassword').touched && service.formMode.get('Passwords.ConfirmPassword').errors?.['required']">To pole jest wymagane..</label>
+        <label class="text-danger" *ngIf="service.formMode.get('Passwords.ConfirmPassword').touched && service.formMode.get('Passwords.ConfirmPassword').errors?.['passwordMismatch']">Hasło sie nie zgadza.</label>
+      </div>
+    </div>
+    <div class="form-row col-8" style="margin:20px">
+      <div class="form-group offset-4">
+        <button type="submit" class="btn btn-lg btn-block" [disabled]="!service.formMode.valid">Zarejestruj</button>
+      </div>
+    </div>
+  </form>

@@ -1,0 +1,42 @@
+<app-home></app-home>
+<div class="container">
+    <div class="card" >
+<Div class="jumbotron py-3">
+    <h1 class="display-4 text-center">Posiłki</h1>
+</Div>
+<div  style="margin-left:30%;margin-right:30%"  class="alert text-center alert-secondary" role="alert">
+    Tutaj możesz utworzyć posiłek, bądź go edytować, aby dodać do posiłku składniki wybierz z listy posiłków przycisk <i class="far fa-plus-square fa-lg right" ></i>
+     </div>
+<div class="row" style="margin:10px">
+    <div class="col-md-6"><h3 class="display-6 text-center">Dodaj/Edytuj danie:</h3>
+        <app-meal-details-form></app-meal-details-form>
+    </div>
+    <div class="col-md-6"><h3 class="display-6 text-center">Lista posiłków:</h3> 
+    <table class="table">
+        <thead class="thead-light">
+<tr>
+    <th>Nazwa składnika</th>
+    <th>Kategoria</th>
+    <th></th>
+</tr>
+        </thead>
+        <tbody *ngFor="let cd of service.list"> 
+            <tr>
+                <td (click)="populateForm(cd)">{{cd.mealName}}</td>
+                <td (click)="populateForm(cd)">{{cd.mealCategory}}</td> 
+                <td >
+                    <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(cd.mealId)" style="margin-right:30px"></i>
+                   <label (click)="onAddComponents(cd.mealId)"> <i class="far fa-plus-square fa-lg right" ></i>  Składniki</label>
+  
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+    </div>
+</div>
+</div>
+
+
+</div>

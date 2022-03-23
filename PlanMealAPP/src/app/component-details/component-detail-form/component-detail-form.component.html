@@ -1,0 +1,18 @@
+
+<form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)">
+    <input name="componentId" type="hidden" [value]="service.formData.componentId"/>
+<div class="form group">
+<label >Składnik:</label>
+<input class="form-control form-control-lg" placeholder="Pełna nazwa składnika" name="componentName" 
+#componentName="ngModel" [(ngModel)]="service.formData.componentName">
+</div>
+
+<div class="form group">
+    <label >Kategoria:</label>
+    <input class="form-control form-control-lg" placeholder="Kategoria" name="componentType" 
+    #componentName="ngModel" [(ngModel)]="service.formData.componentType">
+    </div>
+    <div class="form group">
+<button class="btn btn-lg btn-block" type="submit">Potwierdź</button>
+    </div>
+</form>

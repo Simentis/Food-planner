@@ -1,0 +1,16 @@
+<img src="/assets/img/user.png" style="margin:20px; width: 50%;" class="mx-auto d-block">
+<form #form='ngForm' class="mb-4" autocomplete="off" (submit)="onSubmit(form)">
+  <div class="form-group">
+    <label>Użytkownik</label>
+    <input class="form-control" #UserName="ngModel" name="UserName" [(ngModel)]="formMode.UserName" required>
+  </div>
+  <div class="form-group">
+    <label>Hasło</label>
+    <input type="password" class="form-control" #Password="ngModel" name="Password" [(ngModel)]="formMode.Password" required>
+  </div>
+  <div class="form-row col-8" style="margin:20px">
+    <div class="form-group offset-md-5">
+      <button type="submit" class="btn btn-lg btn-block" [disabled]="form.invalid">Zaloguj</button>
+    </div>
+  </div>
+</form>

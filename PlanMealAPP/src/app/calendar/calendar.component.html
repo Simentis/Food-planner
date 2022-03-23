@@ -1,0 +1,204 @@
+<app-home></app-home>
+<div class="container">
+  <div class="row text-center">
+  <div class="col-7">
+<div class="card" >
+  <div class="row"style="margin:20px">
+  <div class="col-4">
+      <div class="btn-group" style="margin-top: 6px;" >
+        <div
+          class="btn btn-secondary"
+          mwlCalendarPreviousView
+          [view]="view"
+          [(viewDate)]="viewDate"
+          (viewDateChange)="closeOpenMonthViewDay()"
+        >
+        <i class="fa-solid fa-angles-left"></i>
+        </div>
+        <div
+          class="btn btn-outline-secondary"
+          mwlCalendarToday
+          [(viewDate)]="viewDate"
+         >
+          Aktualny
+        </div>
+        <div
+          class="btn btn-secondary"
+          mwlCalendarNextView
+          [view]="view"
+          [(viewDate)]="viewDate"
+          (viewDateChange)="closeOpenMonthViewDay()"
+        >
+        <i class="fa-solid fa-angles-right"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <h3 class="display-6" >{{ viewDate | calendarDate:(view + 'ViewTitle'):'pl' }}</h3>
+    </div>
+    <div class="col-4">
+      <!-- <div class="btn-group">
+        <div
+          class="btn btn-primary"
+          (click)="setView(CalendarView.Month)"
+          
+          [class.active]="view === CalendarView.Month"
+        >
+          Miesiąc
+        </div>
+        <div
+          class="btn btn-primary"
+          (click)="setView(CalendarView.Week)"
+          [class.active]="view === CalendarView.Week"
+        >
+          Tydzień
+        </div>
+        <div
+          class="btn btn-primary"
+          (click)="setView(CalendarView.Day)"
+          [class.active]="view === CalendarView.Day"
+        >
+          Dzień
+        </div>
+      </div> -->
+    </div>
+  </div>  
+  
+  <div style="margin-bottom:20px;margin-left:20px;margin-right:20px" [ngSwitch]="view">
+    <mwl-calendar-month-view 
+    [locale]="locale"
+    
+      *ngSwitchCase="CalendarView.Month"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      [activeDayIsOpen]="activeDayIsOpen"
+      (dayClicked)="dayClicked($event.day)"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+      
+    >
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view [locale]="locale"
+      *ngSwitchCase="CalendarView.Week"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view [locale]="locale" 
+    
+      *ngSwitchCase="CalendarView.Day"
+      [viewDate]="viewDate"
+      [events]="events"
+      [refresh]="refresh"
+      (eventClicked)="handleEvent('Clicked', $event.event)"
+      (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-day-view>
+  </div>
+  
+</div></div>
+<div class="col-5" >
+  <div class="card " >
+  <div><label class="display-6" style=" margin:10px"> Zaplanowane posiłki
+  </label><button style="margin-bottom:20px" class="btn btn-outline-secondary float-right" (click)="addEvent()"><i class="fa-solid fa-plus"></i></button>
+</div>
+
+  <div style="margin: 20px;">
+    <p-table [value]="events" [scrollable]="true"  [rows]="100" scrollHeight="575px"
+    [virtualScroll]="true" [virtualRowHeight]="40">
+ <ng-template pTemplate="header">
+        <tr class="btn-secondary" style="border-top-left-radius:5px;border-top-right-radius:5px">
+          <div class="col-5" style="margin-left:20px;"><th>Nazwa posiłku</th></div>
+          <div class="col-5" style="margin-left:10px"> <th>Data posiłku</th></div>
+          <div class="col-2" > <th style="width:0px auto">Usuń</th></div>
+        </tr>
+      </ng-template>
+  
+        <ng-template pTemplate="body"  let-event>
+        <tr style="background:rgb(219, 217, 217);border-radius:10px;margin-top:5px"  >
+      <!-- <ng-container *ngIf="event.start>this.filtring">  -->
+          
+            <div class="col-5" style="margin-left:10px;margin-top:10px;"><td>
+
+            <input
+              type="number" hidden
+              class="form-control" 
+              [(ngModel)]="event.id"
+              (keyup)="refresh.next()"
+            />
+            <p-dropdown  autoHeight="false" [style]="{'height':'24px'} " placeholder="Nowy wydarzenie" appendTo="body" class="form-control" [editable]="true" [options]="this.servicec.list"  (keyup)="refresh.next()" (onChange)="update(event.id,event)" [(ngModel)]="event.title" optionValue="mealName" optionLabel="mealName" [filter]="true"></p-dropdown>
+            
+          </td></div>
+          <div class="col-5" style="margin-left:10px"> 
+          <td >
+            <input
+         
+              class=" form-control"
+              type="text"
+              mwlFlatpickr
+             [locale]="locale"
+              [(ngModel)]="event.start"
+              (ngModelChange)="update(event.id,event)"
+              [altInput]="true"
+              [convertModelValue]="true"
+              [enableTime]="true"
+              [time24hr]="true"
+              [allowInput]="true"
+              dateFormat="Y-m-dTH:i"
+              altFormat="F j, Y H:i"
+              placeholder="Not set"
+              (change)="refresh.next()"
+            />
+          </td></div>
+          <div class="col-2" style="margin-left:10px;margin-top:10px">
+          <td>
+            <i class="fas fa-fw fa-trash-alt " style="color:red;margin:10px" (click)="deleteEvent(event,event.id)"></i>
+
+          </td></div>
+        <!-- </ng-container>  -->
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+  <ng-template #modalContent let-close="close">
+    <div class="modal-header">
+      <h5 class="modal-title">Lista zakupów</h5>
+      <button type="button" class="close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div>
+  
+        <table class="table ">
+          <thead class="thead-dark">
+  <tr>
+      <th>Składnik</th>
+  </tr>
+          </thead>
+         <ng-container *ngFor="let bb of servicee.list">
+          <ng-container *ngFor="let cc of servicec.list">  
+          <tbody *ngFor="let de of serviced.list"> 
+              <tr *ngIf="cc.mealId==de.mealId&&cc.mealName==modalData.event.title && de.componentId==bb.componentId">
+                  <td >{{bb.componentName}}</td >
+
+              </tr>
+          </tbody></ng-container></ng-container>
+      </table>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary" (click)="close()">
+        OK
+      </button>
+    </div>
+  </ng-template>
+</div>
+</div>
+ 

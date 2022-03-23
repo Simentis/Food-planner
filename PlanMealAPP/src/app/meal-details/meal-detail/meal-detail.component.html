@@ -1,0 +1,71 @@
+<app-home></app-home>
+<div class="container">
+    <div class="card">
+
+ 
+<ng-container *ngFor="let dd of service.list">
+<ng-container *ngIf="dd.mealId == this.service.formDatas.mealId" >
+    <Div class="jumbotron py-3">
+        <h1 class="display-4 text-center">Posiłek: {{dd.mealName}}</h1>
+        <h1 class="display-6 text-center">Kategoria: {{dd.mealCategory}}</h1>
+        <h1 class="display-6 text-center">Przepis: {{dd.mealRecipe}}</h1>
+    </Div>
+    <div  style="margin-left:30%;margin-right:30%"  class="alert text-center alert-secondary" role="alert">
+      Dodaj składniki do posiłku poprzez kliknięcie w składnik.
+      </div>
+<div class="row" style="margin:10px">
+    <div class="col-md-6"><h3 class="display-6 text-center">Posiłek zawiera:</h3>
+        <!-- <app-meal-details-form></app-meal-details-form> -->
+       <table class="table ">
+            <thead class="thead-dark">
+    <tr>
+        <th>Nazwa składnika</th>
+        <th>Kategoria</th>
+        <th></th>
+    </tr>
+            </thead>
+           <ng-container *ngFor="let bb of servicec.list">
+           
+            <tbody *ngFor="let de of serviced.list"> 
+                <tr *ngIf="de.mealId==dd.mealId && de.componentId==bb.componentId">
+                    
+                    <td >{{bb.componentName}}</td >
+                    <td >{{bb.componentType}}</td> 
+                    <td >
+                        <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(bb)"></i>
+                       
+       <!-- <a [routerLink]="['/bookpost/edit/', bookPost.postId]" id="rightdownbutton" class=" btn btn-primary btn-sm float-right">Edit</a> -->
+                    </td>
+                </tr>
+            </tbody></ng-container>
+        </table>
+        
+    </div>
+    <div class="col-md-6"><h3 class="display-6 text-center">Dodaj składniki do posiłku:</h3> 
+    
+        <table class="table">
+        <thead class="thead-light">
+<tr>
+    <th>Nazwa składnika</th>
+    <th>Kategoria</th>
+    <th></th>
+</tr>
+        </thead>
+        <tbody *ngFor="let cd of servicec.list"> 
+            <tr >
+                <td (click)="populateForm(cd)" >{{cd.componentName}}</td >
+                <td (click)="populateForm(cd)">{{cd.componentType}}</td> 
+                <td >
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+    </div>
+</div>
+
+</ng-container>
+</ng-container>   </div>
+</div>

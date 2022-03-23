@@ -1,0 +1,40 @@
+<app-home></app-home>
+<div class="container">
+    <div class=" text-center">
+
+<div class="col-12"><div class="card"><Div class="jumbotron py-3">
+    <h1 class="display-4 text-center">Składniki</h1>
+</Div>
+<div  style="margin-left:30%;margin-right:30%"  class="alert text-center alert-secondary" role="alert">
+    Tutaj możesz utworzyć składnik, bądź go edytować. <br>Kliknij w składnik aby go zeedytować.
+     </div>
+<div class="row" style="margin:10px">
+    <div class="col-6"><h3 class="display-6 text-center">Dodaj/Edytuj składniki:</h3>
+        <app-component-detail-form></app-component-detail-form>
+    </div>
+    <div class="col-6" ><h3 class="display-6 text-center" >Lista składników:</h3> 
+    <table class="table" >
+        <thead class="thead-light">
+<tr>
+    <th>Nazwa składnika</th>
+    <th>Kategoria</th>
+    <th></th>
+</tr>
+        </thead>
+        <tbody *ngFor="let cd of service.list"> 
+            <tr >
+                <td (click)="populateForm(cd)">{{cd.componentName}}</td>
+                <td (click)="populateForm(cd)">{{cd.componentType}}</td>
+                <td >
+                    <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(cd.componentId)"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+    </div>
+</div>
+</div>
+</div></div></div>
+

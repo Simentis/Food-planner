@@ -1,10 +1,9 @@
-<app-home></app-home>
-<div class="container">
-  <div class="row text-center">
-  <div class="col-7">
+
+  <div class="row">
+  <div class="col-lg-7">
 <div class="card" >
   <div class="row"style="margin:20px">
-  <div class="col-4">
+  <div class="col-6">
       <div class="btn-group" style="margin-top: 6px;" >
         <div
           class="btn btn-secondary"
@@ -33,10 +32,10 @@
         </div>
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-6 text-center">
       <h3 class="display-6" >{{ viewDate | calendarDate:(view + 'ViewTitle'):'pl' }}</h3>
     </div>
-    <div class="col-4">
+    <div class="">
       <!-- <div class="btn-group">
         <div
           class="btn btn-primary"
@@ -100,8 +99,9 @@
     </mwl-calendar-day-view>
   </div>
   
-</div></div>
-<div class="col-5" >
+</div>
+</div>
+<div class="col-lg-5" >
   <div class="card " >
   <div><label class="display-6" style=" margin:10px"> Zaplanowane posiłki
   </label><button style="margin-bottom:20px" class="btn btn-outline-secondary float-right" (click)="addEvent()"><i class="fa-solid fa-plus"></i></button>

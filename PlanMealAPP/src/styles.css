@@ -27,6 +27,41 @@ body{
 :host ::ng-deep .p-dropdown-trigger {
     font-size: 8px !important
 }
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link .p-menuitem-text {
+    color: #ffffff;
+}
+
+
+@media screen and (max-width: 960px) {
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link .p-menuitem-text {
+    color: #000000;
+}
+.p-menubar .p-menubar-button {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    color: #ffffff;
+    border-radius: 50%;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.p-menubar.p-menubar-mobile-active .p-menubar-root-list {
+    display: flex;
+    flex-direction: column;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    border-radius: 6px ;
+}
+}
+.p-menubar {
+    padding: 0.5rem;
+    margin-top: 20px;margin-bottom: 20px; background:linear-gradient(#2e3137,#313f5c);
+    padding-left:50px;padding-right:50px;padding-top:15px;border-radius: 10px;
+    
+   
+    border: 0px solid #091d31; 
+    border-radius: 6px;
+}
 input.form-control,input.form-control:focus{
     background-color: #636b7b;
     color: #fff;
@@ -61,6 +96,7 @@ div.form-group.required>label:first-child:after{
 }
 
 .wrapper {
+    align-content: space-between;
     display: flex;
     align-items: center;
     flex-direction: column; 
@@ -121,3 +157,6 @@ div.form-group.required>label:first-child:after{
     text-transform: uppercase;
     font-size: 0.9rem;
  }
+.card{
+    margin-top: 10px;
+}

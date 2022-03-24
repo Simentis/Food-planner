@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Marcin\\Desktop\\PlanMeal\\PlanMealAPI\\PlanMealAPI\\PlanMealAPI.csproj": {}
+    "C:\\Users\\gamer\\Desktop\\Food-planner\\PlanMealAPI\\PlanMealAPI\\PlanMealAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Marcin\\Desktop\\PlanMeal\\PlanMealAPI\\PlanMealAPI\\PlanMealAPI.csproj": {
+    "C:\\Users\\gamer\\Desktop\\Food-planner\\PlanMealAPI\\PlanMealAPI\\PlanMealAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Marcin\\Desktop\\PlanMeal\\PlanMealAPI\\PlanMealAPI\\PlanMealAPI.csproj",
+        "projectUniqueName": "C:\\Users\\gamer\\Desktop\\Food-planner\\PlanMealAPI\\PlanMealAPI\\PlanMealAPI.csproj",
         "projectName": "PlanMealAPI",
-        "projectPath": "C:\\Users\\Marcin\\Desktop\\PlanMeal\\PlanMealAPI\\PlanMealAPI\\PlanMealAPI.csproj",
-        "packagesPath": "C:\\Users\\Marcin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Marcin\\Desktop\\PlanMeal\\PlanMealAPI\\PlanMealAPI\\obj\\",
+        "projectPath": "C:\\Users\\gamer\\Desktop\\Food-planner\\PlanMealAPI\\PlanMealAPI\\PlanMealAPI.csproj",
+        "packagesPath": "C:\\Users\\gamer\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gamer\\Desktop\\Food-planner\\PlanMealAPI\\PlanMealAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Marcin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gamer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -93,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

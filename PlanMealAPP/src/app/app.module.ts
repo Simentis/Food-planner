@@ -27,6 +27,7 @@ import {TableModule} from 'primeng/table';
 import {DropdownModule} from 'primeng/dropdown';
 import {AccordionModule} from 'primeng/accordion';     
 import {MenuItem} from 'primeng/api';   
+import {MenubarModule} from 'primeng/menubar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,7 @@ import {MenuItem} from 'primeng/api';
       provide: DateAdapter,
       useFactory: adapterFactory,
       }),
-      TableModule,DropdownModule,AccordionModule,
+      TableModule,DropdownModule,AccordionModule,MenubarModule
     ],
     
   providers: [UserService, {

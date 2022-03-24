@@ -27,6 +27,7 @@
     "colors": "^1.4.0",
     "date-fns": "^2.28.0",
     "flatpickr": "^4.6.9",
+    "mdb-angular-ui-kit": "^2.0.0",
     "ng-bootstrap": "^0.46.0",
     "ngx-toastr": "^13.2.1",
     "primeicons": "^5.0.0",

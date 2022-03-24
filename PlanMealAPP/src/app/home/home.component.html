@@ -1,28 +1,27 @@
 
+
+
 <div class="container">
   <div class="row ">
 <div class="col-12">
-    <nav class="navbar" style="margin-top: 20px;margin-bottom: 20px; background:linear-gradient(#2e3137,#313f5c);
-    padding-left:50px;padding-right:50px;padding-top:15px;border-radius: 10px">
-      <div class="col-6"><img src="/assets/img/navitem.png" style="margin:20px; width: 50px; filter:invert()" >
-      <a class="navbar-brand text-white display-6 text-center">Planer posiłków</a></div>
-    <div class="col-4 " ><a  style = "opacity: 90%;margin-right: 15px;   background-color: #a0523a;
-      color: #fff;" [routerLink]="['/home']" class="btn  btn-block "id="nav">Strona główna</a>
-    <a style = "margin-right: 15px;  opacity: 90%;  background-color: #a0523a;
-    color: #fff;" [routerLink]="['/components']" class="btn  btn-block "id="nav">Składniki</a>  
-    <a style = "margin-right: 15px; opacity: 90%;  background-color: #a0523a;
-    color: #fff;" [routerLink]="['/meals']" class="btn  btn-block"id="nav">Posiłki</a></div>
-    <div class="col-2 btn-group">
-      <label  class=" btn btn-block" style="opacity: 90%;background-color: #a0523a;
-      color: #fff;"><i class="fa-solid fa-user mr-2 fas  fa-sm fa-fw"></i> {{userDetails.userName}}</label>
-      <button type="button" class="btn btn-danger " (click)="onLogout()"><i class="fas fa-sign-out-alt" ></i>
-      </button></div>
+  <p-menubar [model]="items" >
+    <ng-template pTemplate="start" >
+      <img class="text-center" src="/assets/img/navitem.png" style="margin-top:10px; width: 50px; filter:invert()" ><a class="navbar-brand text-white display-6 text-center">Planer posiłków</a>
+  </ng-template>
   
-   
-  </nav>
-</div>
-  
- 
+  <ng-template pTemplate="end">
+    <div class="btn-group"><label  class=" btn btn-block" style="opacity: 90%;background-color: #ffffff;
+    color: rgb(0, 0, 0);"><i class="fa-solid fa-user mr-2 fas  fa-sm fa-fw"></i> {{userDetails.userName}}</label>
+    <button pButton type="button" class="btn btn-danger " (click)="onLogout()"><i class="fas fa-sign-out-alt" ></i>
+    </button></div>
+  </ng-template>
     
+    <button pButton label="Logout" icon="pi pi-power-off"></button>
+  </p-menubar>
+</div></div>
+
+<router-outlet></router-outlet>
+</div>
+
     
           

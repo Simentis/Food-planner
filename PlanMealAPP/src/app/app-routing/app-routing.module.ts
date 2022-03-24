@@ -12,7 +12,7 @@ import { MealDetailComponent } from '../meal-details/meal-detail/meal-detail.com
 import { CalendarComponent } from '../calendar/calendar.component';
 
 const routes: Routes = [
- {path:'',redirectTo:'/home',pathMatch:'full'},
+ {path:'',redirectTo:'/calendar',pathMatch:'full'},
   {
     path: 'user', component: UserComponent,
     children:[
@@ -22,12 +22,16 @@ const routes: Routes = [
       
     ]
   },
-  
-  {path:'components',component:ComponentDetailsComponent,canActivate:[AuthGuard]},
-  {path:'meals',component:MealDetailsComponent,canActivate:[AuthGuard]},
-  {path:'meals/detail/:id',component:MealDetailComponent,canActivate:[AuthGuard]},
-  {path:'home',component:CalendarComponent,canActivate:[AuthGuard]}
-  
+  {
+    path:'',component:HomeComponent,canActivate:[AuthGuard],
+    children:[
+      {path:'calendar',component:CalendarComponent},
+      {path:'components',component:ComponentDetailsComponent},
+      {path:'meals',component:MealDetailsComponent},
+      {path:'meals/detail/:id',component:MealDetailComponent}
+      
+    ]
+  }
 ];
 
 @NgModule({

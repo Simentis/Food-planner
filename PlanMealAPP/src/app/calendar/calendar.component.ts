@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild, } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild, } from '@angular/core';
 import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarEventTitleFormatter,CalendarView, } from 'angular-calendar';
 import { Subject } from 'rxjs';
 import {isSameDay,isSameMonth,addHours, addMinutes,} from 'date-fns';
@@ -51,8 +51,10 @@ const colors: any = {
       provide: CalendarEventTitleFormatter,
       useClass: CustomEventTitleFormatter,
     },
-  ],
-})
+  ],	
+
+}
+)
 export class CalendarComponent implements OnInit{
   showAll = false;
 
@@ -68,6 +70,7 @@ ref(){
   return this.http.get<Array<CalendarEvent>>(this.baseURL)
 .toPromise()
 .then(res=>{
+  this.items=[];
  for (let i in res)
  {
   this.items.push({
@@ -81,7 +84,7 @@ ref(){
     allDay: false,
   });   
   this.events=this.items;
-  this.refresh.next();
+  
   
 }
 ;       
@@ -121,8 +124,9 @@ userDetails;
       return this.http.put(this.baseURL+id,this.updatedatas)
       .subscribe(
       res => {
-        this.refresh.next();
-       
+        this.ref();
+    
+        
         
       },
       err =>{console.log(err);}
